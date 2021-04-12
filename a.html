@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+
+
+#main {
+    left: 50%;
+    width: 120px;
+    position: relative;
+    display: block;
+    justify-self: center;
+}
+
+#main input {
+    -webkit-appearance: none;
+    position: absolute;
+}
+
+#tab {
+    width: 120px;
+    height: 45px;
+    border-radius: 45px;
+    z-index: 20;
+    /* background: green; */
+    transition: all .3s;
+}
+
+#circle {
+    width: 45px;
+    height: 45px;
+    background: aqua;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 15px rgba(0, 255, 255, .8);
+    z-index: 99;
+    border-radius: 50%;
+    transition: all .3s;
+}
+
+#main input:checked+#tab #circle {
+    background: deeppink;
+    box-shadow: 0 0 15px rgba(255, 20, 147, .8);
+    left: 75px;
+}
+
+#tab::before {
+    content: '';
+    height: 45px;
+    width: 100%;
+    background: linear-gradient(-90deg, #011 0%, aqua 350%);
+    border-radius: 45px;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    opacity: 1;
+    transition: all .3s;
+}
+
+#tab::after {
+    content: '';
+    height: 45px;
+    width: 100%;
+    background: linear-gradient(90deg, #011 0%, deeppink 350%);
+    border-radius: 45px;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    opacity: 0;
+    transition: all .3s;
+}
+
+#main input:checked+#tab::before {
+    opacity: 0;
+}
+
+#main input:checked+#tab::after {
+    opacity: 1;
+}
+
+#gender2 {
+    position: absolute;
+}
+
+#gender2::before {
+    position: absolute;
+    content: '\2642';
+    color: aqua;
+    left: 0;
+    top: 10px;
+    transition: all 1.2s;
+    font-weight: bolder;
+}
+
+#main input:checked~#gender2::before {
+    color: deeppink;
+    left: 105px;
+    transition: all 1.2s ease-in-out;
+    content: '\2640';
+}
+</style>
+
+<body>
+    <div id="main-container">
+      <section class="d-flex justify-content-center">
+        <p class="d-flex align-items-center pr-3" id=female>여자</p>
+        <label for = "gender" id="main">
+            <input type="checkbox" id=gender>
+            <div id="tab">
+                <div id="circle"></div>
+            </div>
+            <div id="gender2"></div>
+            
+        </label>
+        <p class="d-flex align-items-center pl-3" id=male>남자</p>
+      </section>
+    </div>
+
+</body>
+</html>
